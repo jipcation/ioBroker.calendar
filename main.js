@@ -648,7 +648,7 @@ class Calendar extends utils.Adapter {
                 this.addChannel(`${calendar.id}.${i}`, `Day ${i}`);
                 this.addState(`${calendar.id}.${i}.events`, 'Events', 'string', 'calendar.events', JSON.stringify(dayEvents[i]));
                 this.addState(`${calendar.id}.${i}.date`, 'Date', 'string', 'calendar.date', util.getDatetime(parseInt(i)).substring(0, 10));
-                this.addState(`${calendar.id}.${i}.eventsNumber`, 'Number of events', 'number', 'calendar.events', dayCount[i] ? dayCount[i] : 0);
+                this.addState(`${calendar.id}.${i}.eventsNumber`, 'Number of events', 'number', 'calendar.events', dayCount[i] && typeof dayCount[i] === 'number' ? dayCount[i] : 0);
             }
     
             this.getChannels((error, channels) => {
